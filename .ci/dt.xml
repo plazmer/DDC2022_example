@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<settings>
+  <var name="LOGS_PATH" value="C:\Storage/logs"/>
+  <var name="PRIMARY_TENANT" value="Local"/>
+  <var name="CONNECTION_STRING" value="server=localhost;port=5432;database=RX;user id=postgres;password=DBStrongPassword"/>
+  <var name="QUEUE_CONNECTION_STRING" value="virtualhost=/;hostname=localhost;port=5672;username=guest;password=guest;Exchange=RX"/>
+  <var name="DATABASE_ENGINE" value="postgres"/>
+  <var name="DATA_PROTECTION_CERTIFICATE_FILE" value="C:\Storage/data_protection/cert.pfx"/>
+  <var name="DATA_PROTECTION_CERTIFICATE_FILE_PASSWORD" value="34eab92c-4560-46e6-b08c-38e6f27d2018"/>
+  <var name="WEB_HOST_PATH_BASE" value="Client"/>
+  <var name="AUTHENTICATION_USERNAME" value="Service User"/>
+  <var name="AUTHENTICATION_PASSWORD" value="SUStrongPassword"/>
+  <var name="HYPERLINK_SERVER" value="http://192.168.3.179/Sungero"/>
+  <var name="MONGODB_CONNECTION_STRING" value="mongodb://userMongo:password@localhost:27017/"/>
+  <var name="LANGUAGE" value="ru-RU"/>
+  <var name="LOG_LANGUAGE" value="ru-RU"/>
+  <var name="WEB_RELATIVE_PATH" value="Client"/>
+  <var name="SERVER_HTTPS_PORT" value="443"/>
+  <var name="SERVER_HTTP_PORT" value="80"/>
+  <var name="SERVER_ROOT" value="192.168.3.179"/>
+  <var name="WEB_PROTOCOL" value="http"/>
+  <meta name="FORCE_USE_APPDATA_PATH" value="True"/>
+</settings>

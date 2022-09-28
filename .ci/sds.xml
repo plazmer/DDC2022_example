@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<settings>
+  <var name="LOGS_PATH" value="c:\Storage/logs"/>
+  <var name="PRIMARY_TENANT" value="Local"/>
+  <var name="CONNECTION_STRING" value="server=localhost;port=5432;database=RX;user id=postgres;password=DBStrongPassword"/>
+  <var name="QUEUE_CONNECTION_STRING" value="virtualhost=/;hostname=localhost;port=5672;username=guest;password=guest;Exchange=directum"/>
+  <var name="DATABASE_ENGINE" value="postgres"/>
+  <var name="DATA_PROTECTION_CERTIFICATE_FILE" value="c:\Storage/data_protection/cert.pfx"/>
+  <var name="DATA_PROTECTION_CERTIFICATE_FILE_PASSWORD" value="f79cbd3a-1aa4-40ee-b1e0-345bfd6c0a29"/>
+  <var name="WEB_HOST_PATH_BASE" value="Client"/>
+  <var name="AUTHENTICATION_USERNAME" value="Service User"/>
+  <var name="AUTHENTICATION_PASSWORD" value="SUStrongPassword"/>
+  <var name="HYPERLINK_SERVER" value="http://localhost/Sungero"/>
+  <var name="MONGODB_CONNECTION_STRING" value="mongodb://userMongo:password@localhost:27017/"/>
+  <var name="LANGUAGE" value="ru-RU"/>
+  <var name="LOG_LANGUAGE" value="ru-RU"/>
+  <var name="COMPANY_CODE" value="starkov"/>
+  <var name="SYSTEM_NAME" value="Develop"/>
+  <var name="LOCAL_WEB_RELATIVE_PATH" value="Client"/>
+  <var name="UNIQUE_NAMES_IN_OVERRIDES" value="True"/>
+  <var name="LOCAL_WEB_PROTOCOL" value="http"/>
+  <var name="LOCAL_SERVER_HTTP_PORT" value="80"/>
+  <var name="GIT_ROOT_DIRECTORY" value="c:\Storage/git_repository"/>
+  <var name="SERVICE_RUNNER_CONFIG_PATH" value="C:\DirectumLauncher\etc\_services_config\ServiceRunner\_ConfigSettings.xml"/>
+  <block name="REPOSITORIES">
+    <repository folderName="work" solutionType="Work" url="ssh://git@git.local:2224/avp-cicd/work.git"/>
+    <repository folderName="base" solutionType="Base" url="ssh://git@git.local:2224/avp-cicd/base.git"/>
+  </block>
+  <meta name="FORCE_USE_APPDATA_PATH" value="True"/>
+</settings>

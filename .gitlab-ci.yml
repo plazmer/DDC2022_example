@@ -1,0 +1,46 @@
+stages:
+  - build
+  - deploy
+  - test  
+
+build-job:
+  stage: build
+  script:
+    - cd ..
+    - if (Test-Path "./sds") {Get-ChildItem ./sds -Recurse | Remove-Item -Recurse -Force} else {mkdir .\sds}
+    - Copy-Item -Path C:\CICD\SDS_$Env:VERSION\* -Destination .\sds -Force -Recurse
+    - $sds = Get-Content .\git\work\.ci\sds.xml
+    - $git = -join($pwd,"\git")
+    - $sds = $sds -replace '(name="GIT_ROOT_DIRECTORY" value=")(.+?)(")',"`$1$git`$3"
+    - Set-Content -Path .\sds\bin\_ConfigSettings.xml -Value $sds
+    - $pwd = pwd
+    - if (Test-Path "./git") {Get-ChildItem -Path ./git | Remove-Item -Recurse -Force} else {mkdir git}
+    - git clone ssh://git@git.local:2224/avp-cicd/work.git git/work
+    - git clone ssh://git@git.local:2224/avp-cicd/base.git git/base
+    - .\sds\bin\DevelopmentStudio.exe -c .\git\work\.ci\package.xml -d .\work\package.dat --increment-version false
+  artifacts:
+    paths:
+      - package.*
+
+deploy-job:      
+  stage: deploy  
+  script:
+    - cd ..
+    - if (Test-Path ".\dt") {Get-ChildItem .\dt -Recurse | Remove-Item -Recurse -Force} else {mkdir .\dt}
+    - Copy-Item -Path C:\CICD\DT_$Env:VERSION\* -Destination .\dt -Force -Recurse
+    - Copy-Item -Path work\.ci\dt.xml -Destination .\dt\_ConfigSettings.xml -Force
+    - .\dt\DeploymentTool.exe -d work\package.dat -x -n $Env:DT_USER -p $env:DT_PASS
+  dependencies:
+    - build-job
+
+test-job:
+  stage: test
+  image: mcr.microsoft.com/playwright:v1.26.0-focal
+  script:
+    - cd .ci/tests/
+    - npm ci
+    - npx playwright test
+  artifacts:
+    when: always
+    paths:
+      - .ci/tests/playwright-report
